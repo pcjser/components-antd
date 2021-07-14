@@ -1,2 +1,27 @@
-# components-antd
-基于antd的二次开发组件库
+# site
+
+## Getting Started
+
+Install dependencies,
+
+```bash
+$ npm i
+```
+
+Start the dev server,
+
+```bash
+$ npm start
+```
+
+Build documentation,
+
+```bash
+$ npm run docs:build
+```
+
+Build library via `father-build`,
+
+```bash
+$ npm run build
+```
