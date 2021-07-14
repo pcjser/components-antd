@@ -1,10 +1,10 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: 'components-antd',
+  title: 'Components Antd',
   favicon:
-    'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
-  logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
+    'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
   outputPath: 'docs-dist',
   mode: 'site',
   publicPath: process.env.NODE_ENV === 'production' ? '/components-antd/' : '/',
@@ -15,15 +15,38 @@ export default defineConfig({
       title: '组件',
       path: '/components',
     },
-    {
-      title: '我有二级导航',
-      path: '链接是可选的',
-      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
-      children: [
-        { title: '第一项', path: 'https://d.umijs.org' },
-        { title: '第二项', path: '/guide' },
-      ],
-    },
+    // {
+    //   title: '我有二级导航',
+    //   path: '链接是可选的',
+    //   // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
+    //   children: [
+    //     { title: '第一项', path: 'https://d.umijs.org' },
+    //     { title: '第二项', path: '/guide' },
+    //   ],
+    // },
   ],
+  // menus: {
+  //   '/components': [
+  //     {
+  //       title: '通用',
+  //       path: '/components/button',
+  //       // children: [
+  //       //   'Button/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //       //   'Icon/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //       //   'Typography/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //       // ],
+  //     },
+  //     // {
+  //     //   title: '菜单项二',
+  //     //   // path: '菜单路由（可选）',
+  //     //   children: [
+  //     //     // 菜单子项（可选）
+  //     //     'Button/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //     //     'Foo/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //     //     'Demo/index.md',// 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
+  //     //   ],
+  //     // },
+  //   ]
+  // }
   // more config: https://d.umijs.org/config
 });

@@ -1,18 +1,15 @@
 ---
-# title: Button按钮
+title: Button 按钮
 nav:
-  # title: Button按钮
+  title: Button 按钮
   path: /components
-# group:
-#   path: /components/button
-#   title: 测试
 ---
 
 ## Button
 
 Demo:
 
-```tsx
+```jsx
 import React from 'react';
 import { Button } from 'components-antd';
 
