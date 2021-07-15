@@ -1,6 +1,6 @@
 {
   "name": "components-antd",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "homepage": "https://pcjser.github.io/components-antd/",
   "scripts": {
     "start": "dumi dev",
