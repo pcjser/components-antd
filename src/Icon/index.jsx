@@ -1,10 +1,12 @@
 import React from 'react';
-import Icon, { HomeOutlined } from '@ant-design/icons';
+import Icon, * as map from '@ant-design/icons';
 
 const iconMap = {
   HomeOutlined: () => <HomeOutlined />,
 };
 
-export default ({ type, component, ...rest }) => (
-  <Icon component={component ? component : iconMap[type]} {...rest} />
+const Index = ({ type, component, ...rest }) => (
+  <Icon component={component ? component : map[type]} {...rest} />
 );
+
+export default Index;

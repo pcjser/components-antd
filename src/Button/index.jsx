@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import 'antd/dist/antd.css';
 
-export default ({ children, ...rest }) => <Button {...rest}>{children}</Button>;
+const Index = ({ children, ...rest }) => <Button {...rest}>{children}</Button>;
+
+export default Index;

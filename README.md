@@ -1,8 +1,8 @@
-# site
+# Components Antd
 
 ## Getting Started
 
-Install dependencies,
+<!-- Install dependencies,
 
 ```bash
 $ npm i
@@ -24,4 +24,4 @@ Build library via `father-build`,
 
 ```bash
 $ npm run build
-```
+``` -->

@@ -15,6 +15,10 @@ export default defineConfig({
       title: '组件',
       path: '/components',
     },
+    {
+      title: 'GitHub',
+      path: 'https://github.com/pcjser/components-antd',
+    },
     // {
     //   title: '我有二级导航',
     //   path: '链接是可选的',
