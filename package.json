@@ -1,6 +1,6 @@
 {
   "name": "components-antd",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "homepage": "https://pcjser.github.io/components-antd/",
   "scripts": {
     "start": "dumi dev",
@@ -29,14 +29,14 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "react": "^16.12.0",
-    "antd": "^4.16.7"
+    "antd": "^4.16.7",
+    "react": "^16.14.0"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",
     "dumi": "^1.0.16",
-    "father-build": "^1.17.2",
-    "gh-pages": "^3.0.0",
+    "father-build": "^1.19.6",
+    "gh-pages": "^3.2.3",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
     "yorkie": "^2.0.0"
