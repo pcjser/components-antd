@@ -1,4 +1,7 @@
 import 'antd/dist/antd.css';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+moment.locale('zh-cn');
 
 // base
 export Button from './Base/Button';
@@ -38,3 +41,14 @@ export Upload from './Base/Upload';
 export Foo from './Foo';
 export Bar from './Bar';
 export Demo from './Demo';
+
+
+const fn = (sum => {
+  const cb = num => {
+    sum += num;
+    console.log(sum);
+    if (num === 3) return sum;
+    return cb;
+  }
+  return cb;
+})(0);
