@@ -17,4 +17,6 @@ Index.Provider = ({ children, ...rest }) => (
   <Form.Provider {...rest}>{children}</Form.Provider>
 );
 
+Index.useForm = Form.useForm;
+
 export default Index;
