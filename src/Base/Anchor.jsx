@@ -3,6 +3,6 @@ import { Anchor } from 'antd';
 
 const Index = ({ children, ...rest }) => <Anchor {...rest}>{children}</Anchor>;
 
-Index.Link = ({ children, ...rest }) => <Anchor.Link {...rest}>{children}</Anchor.Link>;
+Index.Link = Anchor.Link;
 
 export default Index;

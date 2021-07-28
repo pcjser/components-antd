@@ -1,14 +1,16 @@
 import React from 'react';
 import { Skeleton } from 'antd';
 
-const Index = ({ children, ...rest }) => <Skeleton {...rest}>{children}</Skeleton>;
+const Index = ({ children, ...rest }) => (
+  <Skeleton {...rest}>{children}</Skeleton>
+);
 
-Index.Avatar = props => <Skeleton.Avatar {...props} />;
+Index.Avatar = Skeleton.Avatar;
 
-Index.Button = props => <Skeleton.Button {...props} />;
+Index.Button = Skeleton.Button;
 
-Index.Input = props => <Skeleton.Input {...props} />;
+Index.Input = Skeleton.Input;
 
-Index.Image = props => <Skeleton.Image {...props} />;
+Index.Image = Skeleton.Image;
 
 export default Index;

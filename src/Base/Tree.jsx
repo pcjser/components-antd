@@ -3,8 +3,8 @@ import { Tree } from 'antd';
 
 const Index = React.forwardRef((props, ref) => <Tree ref={ref} {...props} />);
 
-Index.DirectoryTree = props => <Tree.DirectoryTree {...props} />
+Index.TreeNode = Tree.TreeNode;
 
-// Index.TreeNode = ({ children, ...rest }) => <Tree.TreeNode {...rest}>{children}</Tree.TreeNode>
+Index.DirectoryTree = Tree.DirectoryTree;
 
 export default Index;

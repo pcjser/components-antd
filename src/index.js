@@ -72,14 +72,3 @@ export ConfigProvider from './Base/ConfigProvider';
 export Foo from './Foo';
 export Bar from './Bar';
 export Demo from './Demo';
-
-
-const fn = (sum => {
-  const cb = num => {
-    sum += num;
-    console.log(sum);
-    if (num === 3) return sum;
-    return cb;
-  }
-  return cb;
-})(0);

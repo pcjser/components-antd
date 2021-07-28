@@ -7,12 +7,8 @@ const Index = React.forwardRef(({ children, ...rest }, ref) => (
   </Radio>
 ));
 
-Index.Button = ({ children, ...rest }) => (
-  <Radio.Button {...rest}>{children}</Radio.Button>
-);
+Index.Button = Radio.Button;
 
-Index.Group = ({ children, ...rest }) => (
-  <Radio.Group {...rest}>{children}</Radio.Group>
-);
+Index.Group = Radio.Group;
 
 export default Index;

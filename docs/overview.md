@@ -18,11 +18,13 @@ hero:
 #   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
 #     title: Feature 3
 #     desc: Balabala
-footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
+footer: Open-source MIT Licensed | Copyright © 2021<br />Powered by [dumi](https://d.umijs.org)
 ---
+
 # 基本组件
 
 ## Button 按钮
+
 ```jsx
 import React from 'react';
 import { Button, Space } from 'components-antd';
@@ -39,7 +41,9 @@ export default () => (
 ```
 
 ## Icon 图标
-无需安装直接引用，通过type属性控制图标类型
+
+无需安装直接引用，通过 type 属性控制图标类型
+
 ```jsx
 import React from 'react';
 import { Icon, Space, Row } from 'components-antd';
@@ -74,48 +78,56 @@ export default () => (
       </Space>
     </Row>
   </>
-)
+);
 ```
 
 ## Typography 排版
+
 ```jsx
 import React from 'react';
 import { Typography, Divider } from 'components-antd';
 
 export default () => (
-<Typography>
+  <Typography>
     <Typography.Title>Introduction</Typography.Title>
     <Typography.Paragraph>
-      In the process of internal desktop applications development, many different design specs and
-      implementations would be involved, which might cause designers and developers difficulties and
-      duplication and reduce the efficiency of development.
+      In the process of internal desktop applications development, many
+      different design specs and implementations would be involved, which might
+      cause designers and developers difficulties and duplication and reduce the
+      efficiency of development.
     </Typography.Paragraph>
     <Typography.Paragraph>
-      After massive project practice and summaries, Ant Design, a design language for background
-      applications, is refined by Ant UED Team, which aims to
+      After massive project practice and summaries, Ant Design, a design
+      language for background applications, is refined by Ant UED Team, which
+      aims to
       <Typography.Text strong>
-        uniform the user interface specs for internal background projects, lower the unnecessary
-        cost of design differences and implementation and liberate the resources of design and
-        front-end development
+        uniform the user interface specs for internal background projects, lower
+        the unnecessary cost of design differences and implementation and
+        liberate the resources of design and front-end development
       </Typography.Text>.
     </Typography.Paragraph>
     <Typography.Title level={2}>Guidelines and Resources</Typography.Title>
     <Typography.Paragraph>
-      We supply a series of design principles, practical patterns and high quality design resources
-      (<Typography.Text code>Sketch</Typography.Text> and <Typography.Text code>Axure</Typography.Text>), to help people create their product
-      prototypes beautifully and efficiently.
+      We supply a series of design principles, practical patterns and high
+      quality design resources (<Typography.Text code>Sketch</Typography.Text>{' '}
+      and <Typography.Text code>Axure</Typography.Text>), to help people create
+      their product prototypes beautifully and efficiently.
     </Typography.Paragraph>
 
     <Typography.Paragraph>
       <ul>
         <li>
-          <Typography.Link href="/docs/spec/proximity">Principles</Typography.Link>
+          <Typography.Link href="/docs/spec/proximity">
+            Principles
+          </Typography.Link>
         </li>
         <li>
           <Typography.Link href="/docs/spec/overview">Patterns</Typography.Link>
         </li>
         <li>
-          <Typography.Link href="/docs/resources">Resource Download</Typography.Link>
+          <Typography.Link href="/docs/resources">
+            Resource Download
+          </Typography.Link>
         </li>
       </ul>
     </Typography.Paragraph>
@@ -138,17 +150,23 @@ export default () => (
     </Typography.Paragraph>
     <Typography.Title level={2}>设计资源</Typography.Title>
     <Typography.Paragraph>
-      我们提供完善的设计原则、最佳实践和设计资源文件（<Typography.Text code>Sketch</Typography.Text> 和
-      <Typography.Text code>Axure</Typography.Text>），来帮助业务快速设计出高质量的产品原型。
+      我们提供完善的设计原则、最佳实践和设计资源文件（
+      <Typography.Text code>Sketch</Typography.Text> 和
+      <Typography.Text code>Axure</Typography.Text>
+      ），来帮助业务快速设计出高质量的产品原型。
     </Typography.Paragraph>
 
     <Typography.Paragraph>
       <ul>
         <li>
-          <Typography.Link href="/docs/spec/proximity-cn">设计原则</Typography.Link>
+          <Typography.Link href="/docs/spec/proximity-cn">
+            设计原则
+          </Typography.Link>
         </li>
         <li>
-          <Typography.Link href="/docs/spec/overview-cn">设计模式</Typography.Link>
+          <Typography.Link href="/docs/spec/overview-cn">
+            设计模式
+          </Typography.Link>
         </li>
         <li>
           <Typography.Link href="/docs/resources-cn">设计资源</Typography.Link>
@@ -157,20 +175,31 @@ export default () => (
     </Typography.Paragraph>
 
     <Typography.Paragraph>
-      <blockquote>AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
-我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。</blockquote>
-      <pre>AntV 是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV 经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+ 业务系统，通过了日均千万级 UV 产品的严苛考验。
-我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。</pre>
+      <blockquote>
+        AntV
+        是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV
+        经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+
+        业务系统，通过了日均千万级 UV 产品的严苛考验。
+        我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。
+      </blockquote>
+      <pre>
+        AntV
+        是蚂蚁金服全新一代数据可视化解决方案，致力于提供一套简单方便、专业可靠、不限可能的数据可视化最佳实践。得益于丰富的业务场景和用户需求挑战，AntV
+        经历多年积累与不断打磨，已支撑整个阿里集团内外 20000+
+        业务系统，通过了日均千万级 UV 产品的严苛考验。
+        我们正在基础图表，图分析，图编辑，地理空间可视化，智能可视化等各个可视化的领域耕耘，欢迎同路人一起前行。
+      </pre>
     </Typography.Paragraph>
 
     <Typography.Paragraph>
       按<Typography.Text keyboard>Esc</Typography.Text>键退出阅读……
     </Typography.Paragraph>
   </Typography>
-)
+);
 ```
 
 ## Divider 分割线
+
 ```jsx
 import React from 'react';
 import { Divider } from 'components-antd';
@@ -183,5 +212,187 @@ export default () => (
     <Divider type="vertical" />
     <a href="#">Link</a>
   </>
-)
+);
+```
+
+## Grid 栅格
+
+```jsx
+import React from 'react';
+import { Row, Col } from 'components-antd';
+
+export default () => (
+  <Row>
+    <Col span={6}>col-6</Col>
+    <Col span={6}>col-6</Col>
+    <Col span={6}>col-6</Col>
+    <Col span={6}>col-6</Col>
+  </Row>
+);
+```
+
+## Layout 布局
+
+```jsx
+import React from 'react';
+import { Layout } from 'components-antd';
+
+const styles = {
+  common: {
+    color: '#fff',
+    textAlign: 'center',
+  },
+  header: {
+    height: 64,
+    padding: '0 50px',
+    lineHeight: '64px',
+    background: '#7dbcea',
+    color: '#fff',
+  },
+  sider: {
+    lineHeight: '120px',
+    background: '#3ba0e9',
+  },
+  content: {
+    minHeight: 120,
+    lineHeight: '120px',
+    background: 'rgba(16, 142, 233, 1)',
+  },
+  footer: {
+    color: '#fff',
+    background: '#7dbcea',
+  },
+};
+
+export default () => (
+  <Layout style={styles.common}>
+    <Layout.Header style={styles.header}>Header</Layout.Header>
+    <Layout>
+      <Layout.Sider style={styles.sider}>Sider</Layout.Sider>
+      <Layout.Content style={styles.content}>Content</Layout.Content>
+    </Layout>
+    <Layout.Footer style={styles.footer}>Footer</Layout.Footer>
+  </Layout>
+);
+```
+
+## Space 间距
+
+```jsx
+import React from 'react';
+import { Button, Space, Upload, Popconfirm, Icon } from 'components-antd';
+
+export default () => (
+  <Space>
+    Space
+    <Button type="primary">Button</Button>
+    <Upload>
+      <Button>
+        <Icon type="UploadOutlined" /> Click to Upload
+      </Button>
+    </Upload>
+    <Popconfirm
+      title="Are you sure delete this task?"
+      okText="Yes"
+      cancelText="No"
+    >
+      <Button>Confirm</Button>
+    </Popconfirm>
+  </Space>
+);
+```
+
+## Affix 固钉
+
+```jsx
+import React, { useState } from 'react';
+import { Affix, Button } from 'components-antd';
+
+export default () => {
+  const [top, setTop] = useState(10);
+  const [bottom, setBottom] = useState(10);
+  return (
+    <>
+      <Affix offsetTop={top}>
+        <Button type="primary" onClick={() => setTop(top + 10)}>
+          Affix top
+        </Button>
+      </Affix>
+      <br />
+      <Affix offsetBottom={bottom}>
+        <Button type="primary" onClick={() => setBottom(bottom + 10)}>
+          Affix bottom
+        </Button>
+      </Affix>
+    </>
+  );
+};
+```
+
+## Breadcrumb 面包屑
+
+```jsx
+import React from 'react';
+import { Breadcrumb, Icon } from 'components-antd';
+
+export default () => (
+  <Breadcrumb>
+    <Breadcrumb.Item href="">
+      <Icon type="HomeOutlined" />
+    </Breadcrumb.Item>
+    <Breadcrumb.Item href="">
+      <Icon type="UserOutlined" />
+      <span>Application List</span>
+    </Breadcrumb.Item>
+    <Breadcrumb.Item>Application</Breadcrumb.Item>
+  </Breadcrumb>
+);
+```
+
+## Dropdown 下拉菜单
+
+```jsx
+import React from 'react';
+import { Menu, Dropdown, Icon } from 'components-antd';
+
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.antgroup.com"
+      >
+        1st menu item
+      </a>
+    </Menu.Item>
+    <Menu.Item icon={<Icon type="DownOutlined" />} disabled>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.aliyun.com"
+      >
+        2nd menu item (disabled)
+      </a>
+    </Menu.Item>
+    <Menu.Item disabled>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.luohanacademy.com"
+      >
+        3rd menu item (disabled)
+      </a>
+    </Menu.Item>
+    <Menu.Item danger>a danger item</Menu.Item>
+  </Menu>
+);
+
+export default () => (
+  <Dropdown overlay={menu}>
+    <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+      Hover me <Icon type="DownOutlined" />
+    </a>
+  </Dropdown>
+);
 ```

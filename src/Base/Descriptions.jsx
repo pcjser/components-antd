@@ -1,8 +1,10 @@
 import React from 'react';
 import { Descriptions } from 'antd';
 
-const Index = ({ children, ...rest }) => <Descriptions {...rest}>{children}</Descriptions>;
+const Index = ({ children, ...rest }) => (
+  <Descriptions {...rest}>{children}</Descriptions>
+);
 
-Index.Item = ({ children, ...rest }) => <Descriptions.Item {...rest}>{children}</Descriptions.Item>;
+Index.Item = Descriptions.Item;
 
 export default Index;

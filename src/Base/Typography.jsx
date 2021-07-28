@@ -5,20 +5,12 @@ const Index = ({ children, ...rest }) => (
   <Typography {...rest}>{children}</Typography>
 );
 
-Index.Title = ({ children, ...rest }) => (
-  <Typography.Title {...rest}>{children}</Typography.Title>
-);
+Index.Title = Typography.Title;
 
-Index.Paragraph = ({ children, ...rest }) => (
-  <Typography.Paragraph {...rest}>{children}</Typography.Paragraph>
-);
+Index.Paragraph = Typography.Paragraph;
 
-Index.Text = ({ children, ...rest }) => (
-  <Typography.Text {...rest}>{children}</Typography.Text>
-);
+Index.Text = Typography.Text;
 
-Index.Link = ({ children, ...rest }) => (
-  <Typography.Link {...rest}>{children}</Typography.Link>
-);
+Index.Link = Typography.Link;
 
 export default Index;

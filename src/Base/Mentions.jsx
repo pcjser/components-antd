@@ -7,8 +7,6 @@ const Index = React.forwardRef(({ children, ...rest }, ref) => (
   </Mentions>
 ));
 
-Index.Option = ({ children, ...rest }) => (
-  <Mentions.Option {...rest}>{children}</Mentions.Option>
-);
+Index.Option = Mentions.Option;
 
 export default Index;

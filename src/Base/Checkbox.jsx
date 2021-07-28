@@ -7,8 +7,6 @@ const Index = React.forwardRef(({ children, ...rest }, ref) => (
   </Checkbox>
 ));
 
-Index.Group = ({ children, ...rest }) => (
-  <Checkbox.Group {...rest}>{children}</Checkbox.Group>
-);
+Index.Group = Checkbox.Group;
 
 export default Index;
