@@ -221,12 +221,14 @@ export default () => (
 import React from 'react';
 import { Row, Col } from 'components-antd';
 
+const style = { background : 'rgb(16, 142, 233)', lineHeight: '40px', textAlign: 'center', color: '#fff' }
+
 export default () => (
   <Row>
-    <Col span={6}>col-6</Col>
-    <Col span={6}>col-6</Col>
-    <Col span={6}>col-6</Col>
-    <Col span={6}>col-6</Col>
+    <Col style={style} span={6}>col-6</Col>
+    <Col style={style} span={6}>col-6</Col>
+    <Col style={style} span={6}>col-6</Col>
+    <Col style={style} span={6}>col-6</Col>
   </Row>
 );
 ```
@@ -306,25 +308,25 @@ export default () => (
 
 ```jsx
 import React, { useState } from 'react';
-import { Affix, Button } from 'components-antd';
+import { Affix, Button, Space } from 'components-antd';
 
 export default () => {
-  const [top, setTop] = useState(10);
+  const [top, setTop] = useState(100);
   const [bottom, setBottom] = useState(10);
+
   return (
-    <>
+    <Space direction="vertical">
       <Affix offsetTop={top}>
         <Button type="primary" onClick={() => setTop(top + 10)}>
           Affix top
         </Button>
       </Affix>
-      <br />
       <Affix offsetBottom={bottom}>
         <Button type="primary" onClick={() => setBottom(bottom + 10)}>
           Affix bottom
         </Button>
       </Affix>
-    </>
+    </Space>
   );
 };
 ```
@@ -357,7 +359,7 @@ import { Menu, Dropdown, Icon } from 'components-antd';
 
 const menu = (
   <Menu>
-    <Menu.Item>
+    <Menu.Item key="1">
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -366,7 +368,7 @@ const menu = (
         1st menu item
       </a>
     </Menu.Item>
-    <Menu.Item icon={<Icon type="DownOutlined" />} disabled>
+    <Menu.Item key="2" icon={<Icon type="DownOutlined" />} disabled>
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -375,7 +377,7 @@ const menu = (
         2nd menu item (disabled)
       </a>
     </Menu.Item>
-    <Menu.Item disabled>
+    <Menu.Item key="3" disabled>
       <a
         target="_blank"
         rel="noopener noreferrer"
@@ -384,7 +386,7 @@ const menu = (
         3rd menu item (disabled)
       </a>
     </Menu.Item>
-    <Menu.Item danger>a danger item</Menu.Item>
+    <Menu.Item key="4" danger>a danger item</Menu.Item>
   </Menu>
 );
 
@@ -394,5 +396,750 @@ export default () => (
       Hover me <Icon type="DownOutlined" />
     </a>
   </Dropdown>
+);
+```
+
+## Menu 导航菜单
+
+```jsx
+import React from 'react';
+import { Menu, Icon } from 'components-antd';
+
+export default () => (
+  <Menu
+    onClick={console.log}
+    style={{ width: 256 }}
+    defaultSelectedKeys={['1']}
+    defaultOpenKeys={['sub1']}
+    mode="inline"
+  >
+    <Menu.SubMenu key="sub1" icon={<Icon type="MailOutlined" />} title="Navigation One">
+      <Menu.ItemGroup key="g1" title="Item 1">
+        <Menu.Item key="1">Option 1</Menu.Item>
+        <Menu.Item key="2">Option 2</Menu.Item>
+      </Menu.ItemGroup>
+      <Menu.ItemGroup key="g2" title="Item 2">
+        <Menu.Item key="3">Option 3</Menu.Item>
+        <Menu.Item key="4">Option 4</Menu.Item>
+      </Menu.ItemGroup>
+    </Menu.SubMenu>
+    <Menu.SubMenu key="sub2" icon={<Icon type="AppstoreOutlined" />} title="Navigation Two">
+      <Menu.Item key="5">Option 5</Menu.Item>
+      <Menu.Item key="6">Option 6</Menu.Item>
+      <Menu.SubMenu key="sub3" title="Submenu">
+        <Menu.Item key="7">Option 7</Menu.Item>
+        <Menu.Item key="8">Option 8</Menu.Item>
+      </Menu.SubMenu>
+    </Menu.SubMenu>
+    <Menu.SubMenu key="sub4" icon={<Icon type="SettingOutlined" />} title="Navigation Three">
+      <Menu.Item key="9">Option 9</Menu.Item>
+      <Menu.Item key="10">Option 10</Menu.Item>
+      <Menu.Item key="11">Option 11</Menu.Item>
+      <Menu.Item key="12">Option 12</Menu.Item>
+    </Menu.SubMenu>
+  </Menu>
+);
+```
+
+## PageHeader 页头
+
+```jsx
+import React from 'react';
+import { PageHeader } from 'components-antd';
+
+export default () => (
+  <PageHeader
+    style={{ border: '1px solid rgb(235, 237, 240)' }}
+    onBack={console.log}
+    title="Title"
+    subTitle="This is a subtitle"
+  />
+);
+```
+
+## Pagination 分页
+
+```jsx
+import React from 'react';
+import { Pagination, ConfigProvider } from 'components-antd';
+import zhCN from 'antd/lib/locale/zh_CN';
+
+export default () => (
+  <ConfigProvider locale={zhCN}>
+    <Pagination
+      total={85}
+      showSizeChanger
+      showQuickJumper
+      showTotal={total => `总 ${total} 条`}
+    />
+  </ConfigProvider>
+);
+```
+
+## Steps 步骤条
+
+```jsx
+import React from 'react';
+import { Steps } from 'components-antd';
+
+export default () => (
+  <Steps current={1}>
+    <Steps.Step title="Finished" description="This is a description." />
+    <Steps.Step title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
+    <Steps.Step title="Waiting" description="This is a description." />
+  </Steps>
+);
+```
+
+## AutoComplete 自动完成
+
+```jsx
+import React, { useState } from 'react';
+import { AutoComplete } from 'components-antd';
+
+export default () => {
+  const [result, setResult] = useState([]);
+
+  const handleSearch = value => {
+    let res = [];
+    if (!value || value.indexOf('@') >= 0) {
+      res = [];
+    } else {
+      res = ['gmail.com', '163.com', 'qq.com'].map((domain) => `${value}@${domain}`);
+    }
+    setResult(res);
+  };
+
+  return (
+    <AutoComplete
+      style={{
+        width: 200,
+      }}
+      onSearch={handleSearch}
+      placeholder="input here"
+    >
+      {result.map((email) => (
+        <AutoComplete.Option key={email} value={email}>
+          {email}
+        </AutoComplete.Option>
+      ))}
+    </AutoComplete>
+  )
+};
+```
+
+## Cascader 级联选择
+
+```jsx
+import React from 'react';
+import { Cascader } from 'components-antd';
+
+const options = [
+  {
+    value: 'zhejiang',
+    label: 'Zhejiang',
+    children: [
+      {
+        value: 'hangzhou',
+        label: 'Hangzhou',
+        children: [
+          {
+            value: 'xihu',
+            label: 'West Lake',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    value: 'jiangsu',
+    label: 'Jiangsu',
+    children: [
+      {
+        value: 'nanjing',
+        label: 'Nanjing',
+        children: [
+          {
+            value: 'zhonghuamen',
+            label: 'Zhong Hua Men',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export default () => (
+  <Cascader options={options} onChange={console.log} placeholder="Please select" />
+);
+```
+
+## Checkbox 多选框
+
+```jsx
+import React from 'react';
+import { Checkbox, Space } from 'components-antd';
+
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+
+const options = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange' },
+];
+
+const optionsWithDisabled = [
+  { label: 'Apple', value: 'Apple' },
+  { label: 'Pear', value: 'Pear' },
+  { label: 'Orange', value: 'Orange', disabled: false },
+];
+
+export default () => (
+  <Space direction="vertical">
+    <Checkbox.Group options={plainOptions} defaultValue={['Apple']} onChange={console.log} />
+    <Checkbox.Group options={options} defaultValue={['Pear']} onChange={console.log} />
+    <Checkbox.Group
+      options={optionsWithDisabled}
+      disabled
+      defaultValue={['Apple']}
+      onChange={console.log}
+    />
+  </Space>
+);
+```
+
+## DatePicker 日期选择框
+
+```jsx
+import React from 'react';
+import { DatePicker, Space, ConfigProvider } from 'components-antd';
+import zhCN from 'antd/lib/locale/zh_CN';
+
+export default () => (
+  <ConfigProvider locale={zhCN}>
+    <Space direction="vertical">
+      <DatePicker onChange={console.log} />
+      <DatePicker onChange={console.log} picker="week" />
+      <DatePicker onChange={console.log} picker="month" />
+      <DatePicker onChange={console.log} picker="quarter" />
+      <DatePicker onChange={console.log} picker="year" />
+      <DatePicker.RangePicker />
+      <DatePicker.RangePicker showTime />
+      <DatePicker.RangePicker picker="week" />
+      <DatePicker.RangePicker picker="month" />
+      <DatePicker.RangePicker picker="year" />
+    </Space>
+  </ConfigProvider>
+);
+```
+
+```jsx
+import React from 'react';
+import { Form, Select, InputNumber, Switch, Radio, Slider, Button, Upload, Rate, Checkbox, Row, Col, Icon } from 'components-antd';
+
+const formItemLayout = {
+  labelCol: { span: 6 },
+  wrapperCol: { span: 14 }
+};
+
+const normFile = (e) => {
+  console.log('Upload event:', e);
+  if (Array.isArray(e)) return e;
+  return e && e.fileList;
+};
+
+export default () => (
+  <Form
+    name="validate_other"
+    {...formItemLayout}
+    onFinish={console.log}
+    initialValues={{
+      'input-number': 3,
+      'checkbox-group': ['A', 'B'],
+      rate: 3.5,
+    }}
+  >
+    <Form.Item label="Plain Text">
+      <span className="ant-form-text">China</span>
+    </Form.Item>
+    <Form.Item
+      name="select"
+      label="Select"
+      hasFeedback
+      rules={[{ required: true, message: 'Please select your country!' }]}
+    >
+      <Select placeholder="Please select a country">
+        <Select.Option value="china">China</Select.Option>
+        <Select.Option value="usa">U.S.A</Select.Option>
+      </Select>
+    </Form.Item>
+
+    <Form.Item
+      name="select-multiple"
+      label="Select[multiple]"
+      rules={[{ required: true, message: 'Please select your favourite colors!', type: 'array' }]}
+    >
+      <Select mode="multiple" placeholder="Please select favourite colors">
+        <Select.Option value="red">Red</Select.Option>
+        <Select.Option value="green">Green</Select.Option>
+        <Select.Option value="blue">Blue</Select.Option>
+      </Select>
+    </Form.Item>
+
+    <Form.Item label="InputNumber">
+      <Form.Item name="input-number" noStyle>
+        <InputNumber min={1} max={10} />
+      </Form.Item>
+      <span className="ant-form-text"> machines</span>
+    </Form.Item>
+
+    <Form.Item name="switch" label="Switch" valuePropName="checked">
+      <Switch />
+    </Form.Item>
+
+    <Form.Item name="slider" label="Slider">
+      <Slider
+        marks={{
+          0: 'A',
+          20: 'B',
+          40: 'C',
+          60: 'D',
+          80: 'E',
+          100: 'F',
+        }}
+      />
+    </Form.Item>
+
+    <Form.Item name="radio-group" label="Radio.Group">
+      <Radio.Group>
+        <Radio value="a">item 1</Radio>
+        <Radio value="b">item 2</Radio>
+        <Radio value="c">item 3</Radio>
+      </Radio.Group>
+    </Form.Item>
+
+    <Form.Item
+      name="radio-button"
+      label="Radio.Button"
+      rules={[{ required: true, message: 'Please pick an item!' }]}
+    >
+      <Radio.Group>
+        <Radio.Button value="a">item 1</Radio.Button>
+        <Radio.Button value="b">item 2</Radio.Button>
+        <Radio.Button value="c">item 3</Radio.Button>
+      </Radio.Group>
+    </Form.Item>
+
+    <Form.Item name="checkbox-group" label="Checkbox.Group">
+      <Checkbox.Group>
+        <Row>
+          <Col span={8}>
+            <Checkbox value="A" style={{ lineHeight: '32px' }}>
+              A
+            </Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="B" style={{ lineHeight: '32px' }} disabled>
+              B
+            </Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="C" style={{ lineHeight: '32px' }}>
+              C
+            </Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="D" style={{ lineHeight: '32px' }}>
+              D
+            </Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="E" style={{ lineHeight: '32px' }}>
+              E
+            </Checkbox>
+          </Col>
+          <Col span={8}>
+            <Checkbox value="F" style={{ lineHeight: '32px' }}>
+              F
+            </Checkbox>
+          </Col>
+        </Row>
+      </Checkbox.Group>
+    </Form.Item>
+
+    <Form.Item name="rate" label="Rate">
+      <Rate />
+    </Form.Item>
+
+    <Form.Item
+      name="upload"
+      label="Upload"
+      valuePropName="fileList"
+      getValueFromEvent={normFile}
+      extra="longgggggggggggggggggggggggggggggggggg"
+    >
+      <Upload name="logo" action="/upload.do" listType="picture">
+        <Button icon={<Icon type="UploadOutlined" />}>Click to upload</Button>
+      </Upload>
+    </Form.Item>
+
+    <Form.Item label="Dragger">
+      <Form.Item name="dragger" valuePropName="fileList" getValueFromEvent={normFile} noStyle>
+        <Upload.Dragger name="files" action="/upload.do">
+          <p className="ant-upload-drag-icon">
+            <Icon type="InboxOutlined" />
+          </p>
+          <p className="ant-upload-text">Click or drag file to this area to upload</p>
+          <p className="ant-upload-hint">Support for a single or bulk upload.</p>
+        </Upload.Dragger>
+      </Form.Item>
+    </Form.Item>
+
+    <Form.Item wrapperCol={{ span: 12, offset: 6 }}>
+      <Button type="primary" htmlType="submit">
+        Submit
+      </Button>
+    </Form.Item>
+  </Form>
+);
+```
+
+## DatePicker 日期选择框
+
+```jsx
+import React from 'react';
+import { Input, Space, Icon } from 'components-antd';
+
+const suffix = (
+  <Icon type="AudioOutlined"
+    style={{
+      fontSize: 16,
+      color: '#1890ff',
+    }}
+  />
+);
+
+export default () => (
+  <Space direction="vertical">
+    <Input placeholder="default size" prefix={<Icon type="UserOutlined" />} />
+    <Input.Search placeholder="input search text" onSearch={console.log} style={{ width: 200 }} />
+    <Input.Search placeholder="input search text" allowClear onSearch={console.log} style={{ width: 200 }} />
+    <Input.Search placeholder="input search text" onSearch={console.log} enterButton />
+    <Input.Search
+      placeholder="input search text"
+      allowClear
+      enterButton="Search"
+      size="large"
+      onSearch={console.log}
+    />
+    <Input.Search
+      placeholder="input search text"
+      enterButton="Search"
+      size="large"
+      suffix={suffix}
+      onSearch={console.log}
+    />
+  </Space>
+);
+```
+
+## InputNumber 数字输入框
+
+```jsx
+import React from 'react';
+import { InputNumber, Space } from 'components-antd';
+
+export default () => (
+  <Space>
+    <InputNumber min={1} max={10} defaultValue={3} onChange={console.log} />
+    <InputNumber
+      defaultValue={1000}
+      formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+      parser={value => value.replace(/\$\s?|(,*)/g, '')}
+      onChange={console.log}
+    />
+    <InputNumber
+      defaultValue={100}
+      min={0}
+      max={100}
+      formatter={value => `${value}%`}
+      parser={value => value.replace('%', '')}
+      onChange={console.log}
+    />
+  </Space>
+);
+```
+
+## Mentions 提及
+
+```jsx
+import React from 'react';
+import { Mentions } from 'components-antd';
+
+export default () => (
+  <Mentions
+    style={{ width: '100%' }}
+    onChange={console.log}
+    onSelect={console.log}
+    defaultValue="@afc163"
+  >
+    <Mentions.Option value="afc163">afc163</Mentions.Option>
+    <Mentions.Option value="zombieJ">zombieJ</Mentions.Option>
+    <Mentions.Option value="yesmeck">yesmeck</Mentions.Option>
+  </Mentions>
+);
+```
+
+## Radio 单选框
+
+```jsx
+import React from 'react';
+import { Radio } from 'components-antd';
+
+export default () => (
+  <Radio.Group name="radiogroup" defaultValue={1}>
+    <Radio value={1}>A</Radio>
+    <Radio value={2}>B</Radio>
+    <Radio value={3}>C</Radio>
+    <Radio value={4}>D</Radio>
+  </Radio.Group>
+);
+```
+
+## Rate 评分
+
+```jsx
+import React from 'react';
+import { Rate, Space, Icon } from 'components-antd';
+
+export default () => (
+  <Space direction="vertical">
+    <Rate />
+    <Rate allowHalf defaultValue={2.5} />
+    <Rate defaultValue={2} character={({ index }) => index + 1} />
+    <Rate character={<Icon type="HeartOutlined" />} allowHalf />
+  </Space>
+);
+```
+
+## Select 选择器
+
+```jsx
+import React from 'react';
+import { Select, Space } from 'components-antd';
+
+export default () => (
+  <Space>
+    <Select defaultValue="lucy" style={{ width: 120 }} onChange={console.log}>
+      <Select.Option value="jack">Jack</Select.Option>
+      <Select.Option value="lucy">Lucy</Select.Option>
+      <Select.Option value="disabled" disabled>
+        Disabled
+      </Select.Option>
+      <Select.Option value="Yiminghe">yiminghe</Select.Option>
+    </Select>
+    <Select defaultValue="lucy" style={{ width: 120 }} disabled>
+      <Select.Option value="lucy">Lucy</Select.Option>
+    </Select>
+    <Select defaultValue="lucy" style={{ width: 120 }} loading>
+      <Select.Option value="lucy">Lucy</Select.Option>
+    </Select>
+    <Select defaultValue="lucy" style={{ width: 120 }} allowClear>
+      <Select.Option value="lucy">Lucy</Select.Option>
+    </Select>
+    <Select defaultValue="lucy" style={{ width: 120 }} onChange={console.log}>
+      <Select.OptGroup label="Manager">
+        <Select.Option value="jack">Jack</Select.Option>
+        <Select.Option value="lucy">Lucy</Select.Option>
+      </Select.OptGroup>
+      <Select.OptGroup label="Engineer">
+        <Select.Option value="Yiminghe">yiminghe</Select.Option>
+      </Select.OptGroup>
+    </Select>
+  </Space>
+);
+```
+
+## Slider 滑动输入条
+
+```jsx
+import React from 'react';
+import { Slider, Space } from 'components-antd';
+
+export default () => (
+  <>
+    基本：
+    <Slider defaultValue={30} />
+    双滑块：
+    <Slider range defaultValue={[20, 50]} />
+    范围可拖拽：
+    <Slider range={{ draggableTrack: true }} defaultValue={[20, 50]} />
+  </>
+);
+```
+
+## Switch 开关
+
+```jsx
+import React from 'react';
+import { Switch, Space, Icon } from 'components-antd';
+
+export default () => (
+  <Space>
+    <Switch defaultChecked onChange={console.log} />
+    <Switch checkedChildren="开启" unCheckedChildren="关闭" defaultChecked />
+    <Switch
+      checkedChildren={<Icon type="CheckOutlined" />}
+      unCheckedChildren={<Icon type="CloseOutlined" />}
+      defaultChecked
+    />
+  </Space>
+);
+```
+
+## TimePicker 时间选择框
+
+```jsx
+import React from 'react';
+import moment from 'moment';
+import { TimePicker } from 'components-antd';
+
+export default () => (
+  <TimePicker onChange={console.log} defaultValue={moment('00:00:00', 'HH:mm:ss')} />
+);
+```
+
+## Transfer 穿梭框
+
+```jsx
+import React, { useState } from 'react';
+import { Transfer } from 'components-antd';
+
+const mockData = [];
+
+for (let i = 0; i < 20; i++) {
+  mockData.push({
+    key: i.toString(),
+    title: `content${i + 1}`,
+    description: `description of content${i + 1}`,
+  });
+}
+
+const initialTargetKeys = mockData.filter(item => +item.key > 10).map(item => item.key);
+
+export default () => {
+  const [targetKeys, setTargetKeys] = useState(initialTargetKeys);
+  const [selectedKeys, setSelectedKeys] = useState([]);
+
+  return (
+    <Transfer
+      dataSource={mockData}
+      titles={['Source', 'Target']}
+      targetKeys={targetKeys}
+      selectedKeys={selectedKeys}
+      onChange={console.log}
+      onSelectChange={console.log}
+      onScroll={console.log}
+      render={item => item.title}
+    />
+  )
+};
+```
+
+## TreeSelect 树选择
+
+```jsx
+import React, { useState } from 'react';
+import { TreeSelect } from 'components-antd';
+
+const treeData = [
+  {
+    title: 'Node1',
+    value: '0-0',
+    children: [
+      {
+        title: 'Child Node1',
+        value: '0-0-1',
+      },
+      {
+        title: 'Child Node2',
+        value: '0-0-2',
+      },
+    ],
+  },
+  {
+    title: 'Node2',
+    value: '0-1',
+  },
+];
+
+export default () => {
+  const [value, setValue] = useState([]);
+
+  return (
+    <TreeSelect
+      style={{ width: '100%' }}
+      value={value}
+      dropdownStyle={{ maxHeight: 400, overflow: 'auto' }}
+      treeData={treeData}
+      placeholder="Please select"
+      allowClear
+      multiple
+      treeDefaultExpandAll
+      onChange={setValue}
+    />
+  )
+};
+```
+
+## Upload 上传
+
+```jsx
+import React from 'react';
+import { Upload, message, Button, Icon } from 'components-antd';
+
+const props = {
+  name: 'file',
+  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+  headers: {
+    authorization: 'authorization-text',
+  },
+  onChange(info) {
+    if (info.file.status !== 'uploading') {
+      console.log(info.file, info.fileList);
+    }
+    if (info.file.status === 'done') {
+      message.success(`${info.file.name} file uploaded successfully`);
+    } else if (info.file.status === 'error') {
+      message.error(`${info.file.name} file upload failed.`);
+    }
+  },
+};
+
+export default () => (
+  <Upload {...props}>
+    <Button icon={<Icon type="UploadOutlined" />}>Click to Upload</Button>
+  </Upload>
+);
+```
+
+## Avatar 头像
+
+```jsx
+import React from 'react';
+import { Avatar, Image, Icon, Space } from 'components-antd';
+
+export default () => (
+  <Space>
+    <Avatar icon={<Icon type="UserOutlined" />} />
+    <Avatar>U</Avatar>
+    <Avatar size={40}>USER</Avatar>
+    <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+    <Avatar
+      src={<Image src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+    />
+    <Avatar style={{ color: '#f56a00', backgroundColor: '#fde3cf' }}>U</Avatar>
+    <Avatar style={{ backgroundColor: '#87d068' }} icon={<Icon type="UserOutlined" />} />
+  </Space>
 );
 ```
