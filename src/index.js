@@ -48,6 +48,7 @@ export Popover from './Base/Popover';
 export Statistic from './Base/Statistic';
 export Table from './Base/Table';
 export Tabs from './Base/Tabs';
+export Tag from './Base/Tag';
 export Timeline from './Base/Timeline';
 export Tooltip from './Base/Tooltip';
 export Tree from './Base/Tree';

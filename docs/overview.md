@@ -1143,3 +1143,635 @@ export default () => (
   </Space>
 );
 ```
+
+## Badge 徽标数
+
+```jsx
+import React from 'react';
+import { Badge, Icon, Space } from 'components-antd';
+
+const style = {
+  width: 42, 
+  height: 42, 
+  display: 'block', 
+  background: '#eee'
+}
+
+export default () => (
+  <Space size={24}>
+    <Badge count={5}>
+      <a href="#" style={style} />
+    </Badge>
+    <Badge count={0} showZero>
+      <a href="#" style={style} />
+    </Badge>
+    <Badge count={<Icon type="ClockCircleOutlined" style={{ color: '#f5222d' }} />}>
+      <a href="#" style={style} />
+    </Badge>
+  </Space>
+);
+```
+
+## Calendar 日历
+
+```jsx
+import React from 'react';
+import { Calendar } from 'components-antd';
+
+const handleChange = (value, mode) => {
+  console.log(value.format('YYYY-MM-DD'), mode);
+}
+
+export default () => (
+  <Calendar onPanelChange={handleChange} />
+);
+```
+
+## Card 卡片
+
+```jsx
+import React from 'react';
+import { Card } from 'components-antd';
+
+export default () => (
+  <>
+    <Card title="Default size card" extra={<a href="#">More</a>} style={{ width: 300 }}>
+      <p>Card content</p>
+      <p>Card content</p>
+      <p>Card content</p>
+    </Card>
+    <br />
+    <Card
+      hoverable
+      style={{ width: 240 }}
+      cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+    >
+      <Card.Meta title="Europe Street beat" description="www.instagram.com" />
+    </Card>
+  </>
+);
+```
+
+## Carousel 走马灯
+
+```jsx
+import React from 'react';
+import { Carousel } from 'components-antd';
+
+const style = {
+  height: '160px',
+  color: '#fff',
+  lineHeight: '160px',
+  textAlign: 'center',
+  background: '#364d79',
+};
+
+export default () => (
+  <Carousel autoplay>
+    <div>
+      <h3 style={style}>1</h3>
+    </div>
+    <div>
+      <h3 style={style}>2</h3>
+    </div>
+    <div>
+      <h3 style={style}>3</h3>
+    </div>
+    <div>
+      <h3 style={style}>4</h3>
+    </div>
+  </Carousel>
+);
+```
+
+## Collapse 折叠面板
+
+```jsx
+import React from 'react';
+import { Collapse } from 'components-antd';
+
+const text = `
+  A dog is a type of domesticated animal.
+  Known for its loyalty and faithfulness,
+  it can be found as a welcome guest in many households across the world.
+`;
+
+export default () => (
+  <Collapse defaultActiveKey={['1']} onChange={console.log}>
+    <Collapse.Panel header="This is panel header 1" key="1">
+      <p>{text}</p>
+    </Collapse.Panel>
+    <Collapse.Panel header="This is panel header 2" key="2">
+      <p>{text}</p>
+    </Collapse.Panel>
+    <Collapse.Panel header="This is panel header 3" key="3">
+      <p>{text}</p>
+    </Collapse.Panel>
+  </Collapse>
+);
+```
+
+## Comment 评论
+
+```jsx
+import React from 'react';
+import { Comment, Avatar } from 'components-antd';
+
+const ExampleComment = ({ children }) => (
+  <Comment
+    actions={[<span key="comment-nested-reply-to">Reply to</span>]}
+    author={<a>Han Solo</a>}
+    avatar={
+      <Avatar
+        src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+        alt="Han Solo"
+      />
+    }
+    content={
+      <p>
+        We supply a series of design principles, practical patterns and high quality design
+        resources (Sketch and Axure).
+      </p>
+    }
+  >
+    {children}
+  </Comment>
+);
+
+export default () => (
+  <ExampleComment>
+    <ExampleComment>
+      <ExampleComment />
+      <ExampleComment />
+    </ExampleComment>
+  </ExampleComment>
+);
+```
+
+## Descriptions 描述列表
+
+```jsx
+import React from 'react';
+import { Descriptions, Badge } from 'components-antd';
+
+export default () => (
+  <Descriptions title="User Info" bordered>
+    <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
+    <Descriptions.Item label="Billing Mode">Prepaid</Descriptions.Item>
+    <Descriptions.Item label="Automatic Renewal">YES</Descriptions.Item>
+    <Descriptions.Item label="Order time">2018-04-24 18:00:00</Descriptions.Item>
+    <Descriptions.Item label="Usage Time" span={2}>
+      2019-04-24 18:00:00
+    </Descriptions.Item>
+    <Descriptions.Item label="Status" span={3}>
+      <Badge status="processing" text="Running" />
+    </Descriptions.Item>
+    <Descriptions.Item label="Negotiated Amount">$80.00</Descriptions.Item>
+    <Descriptions.Item label="Discount">$20.00</Descriptions.Item>
+    <Descriptions.Item label="Official Receipts">$60.00</Descriptions.Item>
+    <Descriptions.Item label="Config Info">
+      Data disk type: MongoDB
+      <br />
+      Database version: 3.4
+      <br />
+      Package: dds.mongo.mid
+      <br />
+      Storage space: 10 GB
+      <br />
+      Replication factor: 3
+      <br />
+      Region: East China 1<br />
+    </Descriptions.Item>
+  </Descriptions>
+);
+```
+
+## Empty 空状态
+
+```jsx
+import React from 'react';
+import { Empty, Button, Divider } from 'components-antd';
+
+export default () => (
+  <>
+    <Empty />
+    <Divider />
+    <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+    <Divider />
+    <Empty
+      image="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg"
+      imageStyle={{
+        height: 60,
+      }}
+      description={
+        <span>
+          Customize <a href="#API">Description</a>
+        </span>
+      }
+    >
+      <Button type="primary">Create Now</Button>
+    </Empty>
+  </>
+);
+```
+
+## Image 图片
+
+```jsx
+import React from 'react';
+import { Image, Space } from 'components-antd';
+
+export default () => (
+  <Image.PreviewGroup>
+    <Space size={12}>
+      <Image
+        width={200}
+        src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+      />
+      <Image
+        width={200}
+        src="https://gw.alipayobjects.com/zos/antfincdn/aPkFc8Sj7n/method-draw-image.svg"
+      />
+      <Image
+        width={200}
+        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+      />
+    </Space>
+  </Image.PreviewGroup>
+);
+```
+
+## List 列表
+
+```jsx
+import React from 'react';
+import { List, Avatar } from 'components-antd';
+
+const data = [
+  {
+    title: 'Ant Design Title 1',
+  },
+  {
+    title: 'Ant Design Title 2',
+  },
+  {
+    title: 'Ant Design Title 3',
+  },
+  {
+    title: 'Ant Design Title 4',
+  },
+];
+
+export default () => (
+  <List
+    itemLayout="horizontal"
+    dataSource={data}
+    renderItem={item => (
+      <List.Item>
+        <List.Item.Meta
+          avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+          title={<a href="https://ant.design">{item.title}</a>}
+          description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+        />
+      </List.Item>
+    )}
+  />
+);
+```
+
+## Popover 气泡卡片
+
+```jsx
+import React from 'react';
+import { Popover, Button } from 'components-antd';
+
+const content = (
+  <div>
+    <p>Content</p>
+    <p>Content</p>
+  </div>
+);
+
+export default () => (
+  <Popover content={content} title="Title">
+    <Button type="primary">Hover me</Button>
+  </Popover>
+);
+```
+
+## Statistic 统计数值
+
+```jsx
+import React from 'react';
+import { Statistic, Row, Col, Button } from 'components-antd';
+
+export default () => (
+  <Row gutter={16}>
+    <Col span={12}>
+      <Statistic title="Active Users" value={112893} />
+    </Col>
+    <Col span={12}>
+      <Statistic title="Account Balance (CNY)" value={112893} precision={2} />
+      <Button style={{ marginTop: 16 }} type="primary">
+        Recharge
+      </Button>
+    </Col>
+    <Col span={12}>
+      <Statistic title="Active Users" value={112893} loading />
+    </Col>
+  </Row>
+);
+```
+
+## Table 表格
+
+```jsx
+import React from 'react';
+import { Table, Space, Tag } from 'components-antd';
+
+const dataSource = [
+  {
+    key: '1',
+    name: 'John Brown',
+    age: 32,
+    address: 'New York No. 1 Lake Park',
+    tags: ['nice', 'developer'],
+  },
+  {
+    key: '2',
+    name: 'Jim Green',
+    age: 42,
+    address: 'London No. 1 Lake Park',
+    tags: ['loser'],
+  },
+  {
+    key: '3',
+    name: 'Joe Black',
+    age: 32,
+    address: 'Sidney No. 1 Lake Park',
+    tags: ['cool', 'teacher'],
+  },
+];
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: text => <a>{text}</a>,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  },
+  {
+    title: 'Tags',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: tags => (
+      <>
+        {
+          tags.map(tag => (
+              <Tag color={tag.length > 5 ? 'geekblue' : tag === 'loser' ? 'volcano' : 'green'} key={tag}>
+                {tag.toUpperCase()}
+              </Tag>
+            )
+          )
+        }
+      </>
+    ),
+  },
+  {
+    title: 'Action',
+    key: 'action',
+    render: (text, record) => (
+      <Space size="middle">
+        <a>Invite {record.name}</a>
+        <a>Delete</a>
+      </Space>
+    ),
+  },
+];
+
+export default () => (
+  <Table columns={columns} dataSource={dataSource} />
+);
+```
+
+## Tabs 标签页
+
+```jsx
+import React from 'react';
+import { Tabs } from 'components-antd';
+
+export default () => (
+  <Tabs defaultActiveKey="1" onChange={console.log}>
+    <Tabs.TabPane tab="Tab 1" key="1">
+      Content of Tab Pane 1
+    </Tabs.TabPane>
+    <Tabs.TabPane tab="Tab 2" key="2">
+      Content of Tab Pane 2
+    </Tabs.TabPane>
+    <Tabs.TabPane tab="Tab 3" key="3">
+      Content of Tab Pane 3
+    </Tabs.TabPane>
+  </Tabs>
+);
+```
+
+## Tag 标签
+
+```jsx
+import React from 'react';
+import { Tag } from 'components-antd';
+
+export default () => (
+  <>
+    <Tag>Tag 1</Tag>
+    <Tag>
+      <a href="https://github.com/ant-design/ant-design/issues/1862">Link</a>
+    </Tag>
+    <Tag closable onClose={console.log}>
+      Tag 2
+    </Tag>
+    <Tag closable onClose={e => e.preventDefault()}>
+      Prevent Default
+    </Tag>
+  </>
+);
+```
+
+## Timeline 时间轴
+
+```jsx
+import React from 'react';
+import { Timeline } from 'components-antd';
+
+export default () => (
+  <Timeline>
+    <Timeline.Item>Create a services site 2015-09-01</Timeline.Item>
+    <Timeline.Item>Solve initial network problems 2015-09-01</Timeline.Item>
+    <Timeline.Item>Technical testing 2015-09-01</Timeline.Item>
+    <Timeline.Item>Network problems being solved 2015-09-01</Timeline.Item>
+  </Timeline>
+);
+```
+
+## Tooltip 文字提示
+
+```jsx
+import React from 'react';
+import { Tooltip } from 'components-antd';
+
+export default () => (
+  <Tooltip title="prompt text">
+    <span>Tooltip will show on mouse enter.</span>
+  </Tooltip>
+);
+```
+
+## Tree 树形控件
+
+```jsx
+import React from 'react';
+import { Tree } from 'components-antd';
+
+const treeData = [
+  {
+    title: 'parent 1',
+    key: '0-0',
+    children: [
+      {
+        title: 'parent 1-0',
+        key: '0-0-0',
+        disabled: true,
+        children: [
+          {
+            title: 'leaf',
+            key: '0-0-0-0',
+            disableCheckbox: true,
+          },
+          {
+            title: 'leaf',
+            key: '0-0-0-1',
+          },
+        ],
+      },
+      {
+        title: 'parent 1-1',
+        key: '0-0-1',
+        children: [
+          {
+            title: (
+              <span
+                style={{
+                  color: '#1890ff',
+                }}
+              >
+                sss
+              </span>
+            ),
+            key: '0-0-1-0',
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export default () => (
+  <Tree
+    checkable
+    defaultExpandedKeys={['0-0-0', '0-0-1']}
+    defaultSelectedKeys={['0-0-0', '0-0-1']}
+    defaultCheckedKeys={['0-0-0', '0-0-1']}
+    onSelect={console.log}
+    onCheck={console.log}
+    treeData={treeData}
+  />
+);
+```
+
+## Alert 警告提示
+
+```jsx
+import React from 'react';
+import { Alert, Space } from 'components-antd';
+
+export default () => (
+  <Space direction="vertical" style={{ width: '100%' }}>
+    <Alert message="Success Text" type="success" />
+    <Alert message="Info Text" type="info" />
+    <Alert message="Warning Text" type="warning" />
+    <Alert message="Error Text" type="error" />
+  </Space>
+);
+```
+
+## Drawer 抽屉
+
+```jsx
+import React, { useState } from 'react';
+import { Drawer, Button } from 'components-antd';
+
+export default () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button type="primary" onClick={() => setVisible(true)}>
+        Open
+      </Button>
+      <Drawer
+        title="Basic Drawer"
+        placement="right"
+        closable={false}
+        onClose={() => setVisible(false)}
+        visible={visible}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Drawer>
+    </>
+  )
+};
+```
+
+## Message 全局提示
+
+```jsx
+import React from 'react';
+import { message, Button, Space } from 'components-antd';
+
+const info = () => {
+  message.info('This is a normal message');
+};
+
+const success = () => {
+  message.success('This is a success message');
+};
+
+const error = () => {
+  message.error('This is an error message');
+};
+
+const warning = () => {
+  message.warning('This is a warning message');
+};
+
+export default () => (
+  <Space>
+    <Button onClick={info}>Normal</Button>
+    <Button onClick={success}>Success</Button>
+    <Button onClick={error}>Error</Button>
+    <Button onClick={warning}>Warning</Button>
+  </Space>
+);
+```
