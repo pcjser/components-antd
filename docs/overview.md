@@ -18,7 +18,7 @@ hero:
 #   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
 #     title: Feature 3
 #     desc: Balabala
-footer: Open-source MIT Licensed | Copyright © 2021<br />Powered by [dumi](https://d.umijs.org)
+footer: Open-source MIT Licensed | Copyright © pcjser 2021<br />Powered by [dumi](https://d.umijs.org)
 ---
 
 # 基本组件
@@ -1774,4 +1774,344 @@ export default () => (
     <Button onClick={warning}>Warning</Button>
   </Space>
 );
+```
+
+## Modal 对话框
+
+```jsx
+import React, { useState } from 'react';
+import { Modal, Button } from 'components-antd';
+
+export default () => {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
+  return (
+    <>
+      <Button type="primary" onClick={showModal}>
+        Open Modal
+      </Button>
+      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </>
+  )
+}
+```
+
+## Notification 通知提醒框
+
+```jsx
+import React from 'react';
+import { Button, notification, Space } from 'components-antd';
+
+const openNotificationWithIcon = type => {
+  notification[type]({
+    message: 'Notification Title',
+    description:
+      'This is the content of the notification. This is the content of the notification. This is the content of the notification.',
+  });
+};
+
+export default () => (
+  <Space>
+    <Button onClick={() => openNotificationWithIcon('success')}>Success</Button>
+    <Button onClick={() => openNotificationWithIcon('info')}>Info</Button>
+    <Button onClick={() => openNotificationWithIcon('warning')}>Warning</Button>
+    <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
+  </Space>
+)
+```
+
+## Popconfirm 气泡确认框
+
+```jsx
+import React from 'react';
+import { Popconfirm, message, Button } from 'components-antd';
+
+const confirm = e => {
+  console.log(e);
+  message.success('Click on Yes');
+}
+
+const cancel = e => {
+  console.log(e);
+  message.error('Click on No');
+}
+
+export default () => (
+  <Popconfirm
+    title="Are you sure to delete this task?"
+    onConfirm={confirm}
+    onCancel={cancel}
+    okText="Yes"
+    cancelText="No"
+  >
+    <Button type="link">Delete</Button>
+  </Popconfirm>
+)
+```
+
+## Progress 进度条
+
+```jsx
+import React from 'react';
+import { Progress } from 'components-antd';
+
+export default () => (
+  <>
+    <Progress percent={30} />
+    <Progress percent={50} status="active" />
+    <Progress percent={70} status="exception" />
+    <Progress percent={100} />
+    <Progress percent={50} showInfo={false} />
+  </>
+)
+```
+
+## Result 结果
+
+```jsx
+import React from 'react';
+import { Result, Button } from 'components-antd';
+
+export default () => (
+  <Result
+    status="success"
+    title="Successfully Purchased Cloud Server ECS!"
+    subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+    extra={[
+      <Button type="primary" key="console">
+        Go Console
+      </Button>,
+      <Button key="buy">Buy Again</Button>,
+    ]}
+  />
+)
+```
+
+## Skeleton 骨架屏
+
+```jsx
+import React from 'react';
+import { Skeleton } from 'components-antd';
+
+export default () => (
+  <Skeleton avatar paragraph={{ rows: 4 }} active />
+)
+```
+
+## Spin 加载中
+
+```jsx
+import React from 'react';
+import { Spin, Space } from 'components-antd';
+
+export default () => (
+  <Space size="middle">
+    <Spin size="small" />
+    <Spin />
+    <Spin size="large" />
+  </Space>
+)
+```
+
+## Anchor 锚点
+
+```jsx
+import React from 'react';
+import { Anchor } from 'components-antd';
+
+export default () => (
+  <Anchor>
+    <Anchor.Link href="#configprovider-全局化配置" title="ConfigProvider 全局化配置" />
+    <Anchor.Link href="#result-结果" title="Result 结果" />
+  </Anchor>
+)
+```
+
+## BackTop 回到顶部
+
+```jsx
+import React from 'react';
+import { BackTop } from 'components-antd';
+
+export default () => (
+  <>
+    <BackTop />
+    Scroll down to see the bottom-right
+    <strong style={{color: 'rgba(64, 64, 64, 0.6)'}}> gray </strong>
+    button.
+  </>
+)
+```
+
+## ConfigProvider 全局化配置
+
+```jsx
+import React, { useState } from 'react';
+import { 
+  ConfigProvider, 
+  Pagination,
+  DatePicker,
+  TimePicker,
+  Calendar,
+  Popconfirm,
+  Table,
+  Modal,
+  Button,
+  Select,
+  Transfer,
+  Radio,
+  Row,
+  Space
+} from 'components-antd';
+import enUS from 'antd/lib/locale/en_US';
+import zhCN from 'antd/lib/locale/zh_CN';
+import moment from 'moment';
+import 'moment/locale/zh-cn';
+
+moment.locale('en');
+
+const styles = {
+  wrapper: {
+    width: 319,
+    border: '1px solid #d9d9d9',
+    borderRadius: 2
+  },
+  components: {
+    paddingTop: 16,
+    borderTop: '1px solid #d9d9d9'
+  },
+  mb: {
+    marginBottom: 16
+  }
+}
+
+const columns = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    filters: [
+      {
+        text: 'filter1',
+        value: 'filter1',
+      },
+    ],
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+  },
+];
+
+const Page = () => {
+  const [visible, setVisible] = useState(false);
+
+  const info = () => {
+    Modal.info({
+      title: 'some info',
+      content: 'some info',
+    });
+  };
+
+  const confirm = () => {
+    Modal.confirm({
+      title: 'some info',
+      content: 'some info',
+    });
+  };
+
+  return (
+    <div style={styles.components}>
+      <Row style={styles.mb}>
+        <Pagination defaultCurrent={1} total={50} showSizeChanger />
+      </Row>
+      <Row style={styles.mb}>
+        <Space>
+          <Select showSearch style={{ width: 200 }}>
+            <Select.Option value="jack">jack</Select.Option>
+            <Select.Option value="lucy">lucy</Select.Option>
+          </Select>
+          <DatePicker />
+          <TimePicker />
+          <DatePicker.RangePicker style={{ width: 200 }} />
+        </Space>
+      </Row>
+      <Row style={styles.mb}>
+        <Space>
+          <Button type="primary" onClick={() => setVisible(true)}>
+            Show Modal
+          </Button>
+          <Button onClick={info}>Show info</Button>
+          <Button onClick={confirm}>Show confirm</Button>
+          <Popconfirm title="Question?">
+            <a href="#">Click to confirm</a>
+          </Popconfirm>
+        </Space>
+      </Row>
+      <Row style={styles.mb}>
+        <Transfer dataSource={[]} showSearch targetKeys={[]} render={item => item.title} />
+      </Row>
+      <div style={{...styles.wrapper, ...styles.mb}}>
+        <Calendar fullscreen={false} value={moment()} />
+      </div>
+      <div style={styles.mb}>
+        <Table dataSource={[]} columns={columns} />
+      </div>
+      <Modal title="Locale Modal" visible={visible} onCancel={() => setVisible(false)}>
+        <p>Locale Modal</p>
+      </Modal>
+    </div>
+  )
+}
+
+export default () => {
+  const [locale, setLocale] = useState(enUS);
+
+  const changeLocale = e => {
+    const localeValue = e.target.value;
+    setLocale(localeValue);
+    if (!localeValue) {
+      moment.locale('en');
+    } else {
+      moment.locale('zh-cn');
+    }
+  };
+
+  return (
+    <div>
+      <div style={styles.mb}>
+        <span style={{ marginRight: 16 }}>Change locale of components: </span>
+        <Radio.Group value={locale} onChange={changeLocale}>
+          <Radio.Button key="en" value={enUS}>
+            English
+          </Radio.Button>
+          <Radio.Button key="cn" value={zhCN}>
+            中文
+          </Radio.Button>
+        </Radio.Group>
+      </div>
+      <ConfigProvider locale={locale}>
+        <Page
+          key={locale ? locale.locale : 'en' /* Have to refresh for production environment */}
+        />
+      </ConfigProvider>
+    </div>
+  )
+}
 ```

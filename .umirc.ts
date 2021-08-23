@@ -11,10 +11,10 @@ export default defineConfig({
   base: '/components-antd/',
   navs: [
     // null, // null 值代表保留约定式生成的导航，只做增量配置
-    // {
-    //   title: '设计',
-    //   path: '/design',
-    // },
+    {
+      title: '文档',
+      path: '/docs',
+    },
     {
       title: '基本组件',
       path: '/overview',
