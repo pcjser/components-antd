@@ -11,8 +11,10 @@
     "strict": true,
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@@/*": ["src/.umi/*"],
+      "comp-antd": ["src/index.ts"]
     },
+    "declaration": true,
     "allowSyntheticDefaultImports": true
   },
   "exclude": [

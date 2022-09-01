@@ -1,6 +1,4 @@
-import 'antd/dist/antd.css';
-// import Button from 'antd';
-
+import 'antd/dist/antd.css'; // import Button from 'antd';
 // base
 // export Button;
 // export Icon from './Base/Icon';
@@ -66,16 +64,13 @@ import 'antd/dist/antd.css';
 // export Anchor from './Base/Anchor';
 // export BackTop from './Base/BackTop';
 // export ConfigProvider from './Base/ConfigProvider';
-
 // // extension
-import Foo from './Foo';
-// export Bar from './Bar';
-// export Demo from './Demo';
 
+import Foo from './Foo'; // export Bar from './Bar';
+// export Demo from './Demo';
 // const Component = {
 //   Foo,
 // };
-
 // export default Component;
 
 export default Foo;

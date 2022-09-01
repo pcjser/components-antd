@@ -29,8 +29,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
-    "antd": "^4.16.7",
-    "react": "^16.14.0"
+    "antd": "^4.16.7"
   },
   "devDependencies": {
     "@umijs/test": "^3.0.5",
